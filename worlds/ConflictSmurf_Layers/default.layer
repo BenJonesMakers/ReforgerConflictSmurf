@@ -18,87 +18,16 @@ TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
 }
 SCR_GameModeCampaign GameMode_Campaign1 : "{3B230AAC5252108F}Prefabs/MP/Modes/Conflict/GameMode_Campaign.et" {
  coords 7518.876 2.5 6676.655
- userScript "	// this will need to move out"\
+ userScript "	private ref TFSBEN_AISpawner m_TFSBEN_AISpawner;"\
  "	"\
- "	protected void AISPawner(string spawnGroup, vector spawnPosition, string waypointType, vector waypointPosition)"\
+ "	TFSBEN_AISpawner GetAISpawner()"\
  "	{"\
- "		// Generate the Resource"\
- "		Resource resource = GenerateAndValidateResource(spawnGroup);"\
- "		"\
- "		if(!resource)"\
- "		{"\
- "			Print((\"[AI Spawner] Unable to load resource for the spawn group: \" + spawnGroup), LogLevel.ERROR);"\
- "		}"\
- "		"\
- "		// Generate the spawn params and spawn the group "\
- "		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, null, GenerateSpawnParams(spawnPosition)));"\
- "		"\
- "		if(!group)"\
- "		{"\
- "			Print(\"[AI Spawner] Unable to spawn group!\", LogLevel.ERROR);"\
- "			return;"\
- "		}"\
- "		"\
- "		// Create a waypoint for this group"\
- "		CreateWaypoint(group, waypointType, waypointPosition);"\
- "		"\
- "	}"\
- "	"\
- "	protected void CreateWaypoint(SCR_AIGroup group, string waypointType, vector waypointPosition)"\
- "	{"\
- "		// generate the resouce"\
- "		Resource resource = GenerateAndValidateResource(waypointType);"\
- "		"\
- "		if(!resource)"\
- "		{"\
- "			Print((\"[Create Waypoint] Unable to load resource for the waypoint: \" + group), LogLevel.ERROR);"\
- "			return;"\
- "		}"\
- "		"\
- "		// Generate the spawn params and create the waypoint"\
- "		AIWaypoint waypoint = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(resource, null, GenerateSpawnParams(waypointPosition)));"\
- "		"\
- "		if(!waypoint)"\
- "		{"\
- "			Print(\"[Create Waypoint] Unable to create waypoint!\", LogLevel.ERROR);"\
- "			return;"\
- "		}"\
- "		"\
- "		// Assign the waypoint to the group"\
- "		group.AddWaypoint(waypoint);"\
- "	}"\
- "	"\
- "	protected Resource GenerateAndValidateResource(string resourceToLoad)"\
- "	{"\
- "		// Load the resource"\
- "		Resource resource = Resource.Load(resourceToLoad);"\
- "		"\
- "		// Validate the prefav and show appropraite error if Invalid "\
- "		if(!resource.IsValid())"\
- "		{"\
- "			Print(\"[Generate and Validate Resource] Resource is invalid!\", LogLevel.ERROR);"\
- "			return null;"\
- "		}"\
- "		"\
- "		// Return the Resource"\
- "		return resource;"\
- "		"\
- "	}"\
- "	"\
- "	protected EntitySpawnParams GenerateSpawnParams(vector position)"\
- "	{"\
- "		// Create a new set of spawn params "\
- "		EntitySpawnParams params = EntitySpawnParams();"\
- "		params.TransformMode = ETransformMode.WORLD;"\
- "		"\
- "		// Assign teh position to those params "\
- "		params.Transform[3] = position;"\
- "		"\
- "		// Return this set of spawn params"\
- "		return params; "\
+ "		return m_TFSBEN_AISpawner;"\
  "	}"
  OnGameStart ""\
  "		super.OnGameStart();"\
+ "		"\
+ "		m_TFSBEN_AISpawner = new TFSBEN_AISpawner();"\
  "		"\
  "		// string vars for our resources "\
  "		string spawnGroup = \"{5BEA04939D148B1D}Prefabs/Groups/INDFOR/Group_FIA_FireTeam.et\";"\
@@ -111,7 +40,7 @@ SCR_GameModeCampaign GameMode_Campaign1 : "{3B230AAC5252108F}Prefabs/MP/Modes/Co
  "		IEntity waypointPosition = GetGame().GetWorld().FindEntityByName(\"waypointTest1\");"\
  "		"\
  "		// Execute the AI spawning using a delayed call "\
- "		GetGame().GetCallqueue().CallLater(AISPawner, 10000, false, spawnGroup, spawnPosition.GetOrigin(), waypointType, waypointPosition.GetOrigin());"\
+ "		GetGame().GetCallqueue().CallLater(m_TFSBEN_AISpawner.AISpawner, 10000, false, spawnGroup, spawnPosition.GetOrigin(), waypointType, waypointPosition.GetOrigin());"\
  "	"
  m_iControlPointsThreshold 30
  m_iMaxRespawnRadios 2
