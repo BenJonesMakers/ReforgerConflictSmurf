@@ -1,0 +1,20 @@
+$grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+ {
+  components {
+   SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+    m_iRespawnPeriod 600
+    m_iRespawnWaves 1
+   }
+  }
+  coords 7290.091 18.893 6915.951
+ }
+ {
+  components {
+   SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+    m_iRespawnPeriod 600
+    m_iRespawnWaves 1
+   }
+  }
+  coords 1216.649 61.512 5923.164
+ }
+}

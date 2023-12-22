@@ -1,0 +1,149 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5F22B9DAFE75D316}" {
+     NavmeshFile "{A07353FE17EB2C49}worlds/MP/Navmeshes/CTI_Campaign_Eden.nmn"
+    }
+   }
+  }
+ }
+ coords 7524.31 2.5 6678.388
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7520.199 2.5 6679.066
+}
+TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+ coords 7512.327 2.342 6666.636
+}
+SCR_GameModeCampaign GameMode_Campaign1 : "{3B230AAC5252108F}Prefabs/MP/Modes/Conflict/GameMode_Campaign.et" {
+ coords 7518.876 2.5 6676.655
+ userScript "	// this will need to move out"\
+ "	"\
+ "	protected void AISPawner(string spawnGroup, vector spawnPosition, string waypointType, vector waypointPosition)"\
+ "	{"\
+ "		// Generate the Resource"\
+ "		Resource resource = GenerateAndValidateResource(spawnGroup);"\
+ "		"\
+ "		if(!resource)"\
+ "		{"\
+ "			Print((\"[AI Spawner] Unable to load resource for the spawn group: \" + spawnGroup), LogLevel.ERROR);"\
+ "		}"\
+ "		"\
+ "		// Generate the spawn params and spawn the group "\
+ "		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, null, GenerateSpawnParams(spawnPosition)));"\
+ "		"\
+ "		if(!group)"\
+ "		{"\
+ "			Print(\"[AI Spawner] Unable to spawn group!\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		// Create a waypoint for this group"\
+ "		CreateWaypoint(group, waypointType, waypointPosition);"\
+ "		"\
+ "	}"\
+ "	"\
+ "	protected void CreateWaypoint(SCR_AIGroup group, string waypointType, vector waypointPosition)"\
+ "	{"\
+ "		// generate the resouce"\
+ "		Resource resource = GenerateAndValidateResource(waypointType);"\
+ "		"\
+ "		if(!resource)"\
+ "		{"\
+ "			Print((\"[Create Waypoint] Unable to load resource for the waypoint: \" + group), LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		// Generate the spawn params and create the waypoint"\
+ "		AIWaypoint waypoint = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(resource, null, GenerateSpawnParams(waypointPosition)));"\
+ "		"\
+ "		if(!waypoint)"\
+ "		{"\
+ "			Print(\"[Create Waypoint] Unable to create waypoint!\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		// Assign the waypoint to the group"\
+ "		group.AddWaypoint(waypoint);"\
+ "	}"\
+ "	"\
+ "	protected Resource GenerateAndValidateResource(string resourceToLoad)"\
+ "	{"\
+ "		// Load the resource"\
+ "		Resource resource = Resource.Load(resourceToLoad);"\
+ "		"\
+ "		// Validate the prefav and show appropraite error if Invalid "\
+ "		if(!resource.IsValid())"\
+ "		{"\
+ "			Print(\"[Generate and Validate Resource] Resource is invalid!\", LogLevel.ERROR);"\
+ "			return null;"\
+ "		}"\
+ "		"\
+ "		// Return the Resource"\
+ "		return resource;"\
+ "		"\
+ "	}"\
+ "	"\
+ "	protected EntitySpawnParams GenerateSpawnParams(vector position)"\
+ "	{"\
+ "		// Create a new set of spawn params "\
+ "		EntitySpawnParams params = EntitySpawnParams();"\
+ "		params.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		// Assign teh position to those params "\
+ "		params.Transform[3] = position;"\
+ "		"\
+ "		// Return this set of spawn params"\
+ "		return params; "\
+ "	}"
+ OnGameStart ""\
+ "		super.OnGameStart();"\
+ "		"\
+ "		// string vars for our resources "\
+ "		string spawnGroup = \"{5BEA04939D148B1D}Prefabs/Groups/INDFOR/Group_FIA_FireTeam.et\";"\
+ "		string waypointType = \"{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et\";"\
+ "		"\
+ "		// Entity varibles for our positions "\
+ "		// TODO: this needs to the the special valid place but is currently an E_Comment"\
+ "		IEntity spawnPosition = GetGame().GetWorld().FindEntityByName(\"spawnTest1\");"\
+ "		// TODO: this would need to dynamically be the nearest town to the player but is currently an E_Comment"\
+ "		IEntity waypointPosition = GetGame().GetWorld().FindEntityByName(\"waypointTest1\");"\
+ "		"\
+ "		// Execute the AI spawning using a delayed call "\
+ "		GetGame().GetCallqueue().CallLater(AISPawner, 10000, false, spawnGroup, spawnPosition.GetOrigin(), waypointType, waypointPosition.GetOrigin());"\
+ "	"
+ m_iControlPointsThreshold 30
+ m_iMaxRespawnRadios 2
+ m_iHQStartingSupplies 650
+ m_bRandomizeSupplies 0
+}
+ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
+ coords 7506.517 2.479 6673.349
+}
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords 7503.897 2.447 6669.944
+}
+SCR_CampaignFactionManager CampaignFactionManager1 : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFactionManager.et" {
+ coords 7546.388 2.193 6684.378
+ Factions {
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" {
+   m_bIsPlayable 0
+  }
+ }
+}
+HitRegistrationManager HitRegManager1 : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
+ coords 7512.261 2.469 6671.92
+}
+SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager.et" {
+ coords 7538.333 2.261 6681.023
+}
+BasePreloadManager PreloadManager_Campaign1 : "{32BFDCDE99092FCE}Prefabs/World/Game/PreloadManager_Campaign.et" {
+ coords 7541.01 2.066 6677.41
+}
+SCR_LoadoutManager : "{58FBD035E53D95C1}Prefabs/MP/Campaign/CampaignLoadoutManager.et" {
+ coords 7549.458 2.139 6684.353
+}
+ItemPreviewManagerEntity ItemPreviewManager1 : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+ coords 7521.034 2.496 6675.701
+}

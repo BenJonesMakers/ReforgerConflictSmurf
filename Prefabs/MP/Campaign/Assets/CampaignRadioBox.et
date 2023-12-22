@@ -1,0 +1,8 @@
+GenericEntity : "{8154532BBAD4C09C}Prefabs/MP/Campaign/Assets/CampaignRadioBox.et" {
+ ID "566E798DAFDF5FC4"
+ components {
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 0
+  }
+ }
+}

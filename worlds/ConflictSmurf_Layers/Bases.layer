@@ -1,0 +1,63 @@
+$grp GenericEntity : "{1391CE8C0E255636}Prefabs/Systems/MilitaryBase/ConflictMilitaryBase.et" {
+ TownBaseChotain {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_bIsControlPoint 1
+    m_bDisableWhenUnusedAsHQ 0
+    m_sBaseName "TownBaseChotain"
+    m_sBaseNameUpper "CHOTAIN"
+   }
+   SCR_EditableSystemComponent "{5B0AB14FBD96A524}" {
+    m_UIInfo SCR_EditableDescriptorUIInfo "{5B0AB14FA66FFA19}" {
+     m_sFaction "USSR"
+    }
+   }
+   SCR_FactionAffiliationComponent "{5AFC974A2595F05D}" {
+    "faction affiliation" "FIA"
+   }
+   SCR_MilitaryBaseAreaMeshComponent "{5AFC9B0FB2E4AF40}" {
+    m_bFollowTerrain 1
+   }
+  }
+  coords 7098.2 118.494 6126.576
+  {
+   SCR_CampaignSpawnPointGroup {
+    ID "5C6696731466AF36"
+    coords 0 0 -0.598
+   }
+  }
+ }
+ TownBaseLamentin {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_iRadius 75
+    m_bIsControlPoint 1
+    m_bDisableWhenUnusedAsHQ 0
+    m_sBaseName "Lamantin"
+    m_sBaseNameUpper "LAMENTIN"
+   }
+   SCR_CampaignSuppliesComponent "{5C6696724F524DA2}" {
+    m_iSupplies 1000
+    m_iSuppliesMax 1000
+   }
+   SCR_FactionAffiliationComponent "{5AFC974A2595F05D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 1234.399 35.617 5995.934
+  angleY -104.925
+ }
+ AirFieldBaseNorth {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_iRadius 50
+    m_bIsControlPoint 1
+    m_bDisableWhenUnusedAsHQ 0
+    m_sBaseName "AirField Base North 1"
+    m_sBaseNameUpper "AIRFIELDBASENORTH1"
+   }
+  }
+  coords 4954.699 28.5 11987.112
+  angleY -178.997
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8154532BBAD4C09D}Prefabs/MP/Campaign/Assets/CampaignRadioBox.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

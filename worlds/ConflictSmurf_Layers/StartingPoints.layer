@@ -1,0 +1,48 @@
+$grp GenericEntity : "{1391CE8C0E255636}Prefabs/Systems/MilitaryBase/ConflictMilitaryBase.et" {
+ StartingPos01 {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_bCanBeHQ 1
+    m_sBaseName "US Infil 1"
+    m_sBaseNameUpper "US INFIL 1"
+   }
+   SCR_CampaignSeizingComponent "{5C66967235FBEEA3}" {
+    Enabled 0
+   }
+   SCR_CampaignSuppliesComponent "{5C6696724F524DA2}" {
+    m_iSupplies 2000
+    m_iSuppliesMax 5000
+   }
+   SCR_EditableSystemComponent "{5B0AB14FBD96A524}" {
+    m_UIInfo SCR_EditableDescriptorUIInfo "{5B0AB14FA66FFA19}" {
+     m_sFaction "US"
+    }
+   }
+  }
+  coords 7468.177 8.144 6705.6
+  {
+   GenericEntity {
+    ID "5CCED514A5908822"
+    coords 0 0 -1.684
+    Flags 2097155
+   }
+  }
+ }
+ StartingPos02 {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_bCanBeHQ 1
+    m_sBaseName "US Infil 2"
+    m_sBaseNameUpper "US INFIL 2"
+   }
+   SCR_CampaignSeizingComponent "{5C66967235FBEEA3}" {
+    Enabled 0
+   }
+   SCR_CampaignSuppliesComponent "{5C6696724F524DA2}" {
+    m_iSupplies 2000
+    m_iSuppliesMax 5000
+   }
+  }
+  coords 1074.845 3.266 6032.384
+ }
+}

@@ -1,0 +1,11 @@
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ components {
+  SCR_MapDescriptorComponent "{5F22A8B22042B93F}" {
+   DisplayName "SupplyDrop"
+   MapItemDescriptor 1
+   MainType Target
+  }
+ }
+ coords 7786.933 2.344 5876.805
+ angleY -21.097
+}

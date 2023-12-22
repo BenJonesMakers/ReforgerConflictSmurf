@@ -1,0 +1,8 @@
+$grp GenericEntity : "{934A3C3A870634DC}PrefabsEditable/System/E_Comment.et" {
+ spawnTest1 {
+  coords 7356.329 14.976 6790.662
+ }
+ waypointTest1 {
+  coords 7235.471 29.133 6928.418
+ }
+}
